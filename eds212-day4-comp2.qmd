@@ -4,4 +4,38 @@ format: html
 editor: visual
 ---
 
-change
+```{r}
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+# Basic Data exploration
+
+-   names: get variable names
+-   dim: get data dimensions
+-   head: Get first n lines (6 by default)
+-   tail: get last n lines (6 by default)
+-   summary: get basic summary statistics
+
+```{r}
+names(penguins)
+dim(penguins)
+head(penguins)
+tail(penguins)
+summary(penguins)
+```
+```{r}
+skim(penguins)
+#gives us a rough view of the data
+```
+```{r}
+#looking at data visually
+ggpairs(penguins)
+```
+
+
+
+
+
