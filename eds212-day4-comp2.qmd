@@ -34,6 +34,43 @@ skim(penguins)
 #looking at data visually
 ggpairs(penguins)
 ```
+```{r}
+#code that allison made and looks nice
+penguins %>%
+  select(species, body_mass_g, ends_with("_mm")) %>% 
+  GGally::ggpairs(aes(color = species)) +
+  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"))
+```
+
+# Making more exploratory charts in ggplot2
+```{r}
+#Histogram
+penguin_histogram <- ggplot(data = penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(fill = "orange", color = "purple") + 
+  theme_minimal
+  
+penguin_histogram
+#constant is outside aes, variable is inside aes
+
+penguin_histogram_2 <- ggplot(data = penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(aes(fill = species)) + 
+  theme_minimal()
+penguin_histogram_2
+#this color codes the species by name
+```
+## Boxplot
+```{r}
+#bill length by species
+ggplot(data = penguins, aes (x = species, y = bill_length_mm)) + geom_boxplot(aes(fill = species))
+ggplot(data = penguins, aes (x = species, y = bill_length_mm)) + 
+  geom_boxplot(fill = "yellow", aes(fill = islands)) + 
+  geom_jitter(color = "magenta", aes(size = bill_depth_mm), alpha = 0.5) + 
+  theme_dark()
+```
+
+
+
 
 
 
